@@ -1,35 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Actin for iran main page</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid repellendus voluptates laboriosam, vero necessitatibus iure culpa eveniet dolore cumque nostrum aliquam, similique quia illo
+<p>Lorem XXX ipsum dolor sit amet consectetur adipisicing elit. Aliquid repellendus voluptates laboriosam, vero necessitatibus iure culpa eveniet dolore cumque nostrum aliquam, similique quia illo
      ipsa blanditiis explicabo tempore. Voluptatem, repudiandae!</p>
 <div class="container">
     <div class ="row">
+
+      {%for campaign in campaigns%}
         <div class="card column" style="width: 18rem;">
             <img class="card-img-top" src="..." alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">HR 9203</h5>
-              <p class="card-text">Ban entry of Muullahs to USA.</p>
-              <a href="#" class="btn btn-primary">See Sample communication</a>
+              <h5 class="card-title">{{campaign.short_description}}</h5>
+              <p class="card-text scroll">{{campaign.long_description}}</p>
+              <p> {{campaign.contact_person.fist_name}}</p>
+              </p>
+              <a href="/comm" class="btn btn-primary">See communication</a>
             </div>
         </div>
-        <div class="card column" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card column" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
+        {% endfor %}
+
+
+
     </div>
 </div>
 
