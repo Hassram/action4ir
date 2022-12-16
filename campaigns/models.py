@@ -28,10 +28,10 @@ class Campaign(models.Model):
     long_description = models.TextField()
     due_date = models.DateField(default= date.today() + timedelta(days= 90))
     
-    completed_on = models.DateField(blank = True)
-    completion_note = models.TextField(blank = True)
+    completed_on = models.DateField(blank = True, null=True),
+    completion_note = models.TextField(blank = True, null=True)
     url = models.URLField(max_length=200, blank=True)
     contact_person = models.ForeignKey(ContactPerson, on_delete=models.SET_DEFAULT, default=None, null=True)
-     
+    ready_for_release= models.BooleanField(default=False) 
     
     
