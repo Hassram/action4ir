@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<p>Lorem XXX ipsum dolor sit amet consectetur adipisicing elit. Aliquid repellendus voluptates laboriosam, vero necessitatibus iure culpa eveniet dolore cumque nostrum aliquam, similique quia illo
-     ipsa blanditiis explicabo tempore. Voluptatem, repudiandae!</p>
-<div class="container">
-    <div class ="row">
+<p>In September 2022, protests have broken out across Iran after the death of Mahsa (Zhina) Amini, a 22-year-old Iranian who died in morality police custody.
 
+  Mahsa was arrested by Guidance Patrol forces for wearing her hijab improperly. She was beaten by baton and forced to get to the morality police vans and moved to the Moral Security Agency. Her brother was told that they take 
+  <h2 class = "h2">Active Campaigns </h2>
+    <div class ="row">
+      
       {%for campaign in campaigns%}
         <div class="card column" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
+            <img class="card-img-top" src={{campaign.cover_image.url}} alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">{{campaign.short_description}}</h5>
-              <p class="card-text scroll">{{campaign.long_description}}</p>
-              <p> {{campaign.contact_person.fist_name}}</p>
+              <h5 class="card-title">{{campaign.short_description | truncatechars:50}}</h5>
+              <p class="card-text">{{campaign.long_description | truncatechars:100}}</p>
               </p>
-              <a href="/comm" class="btn btn-primary">See communication</a>
+              <a href="campaign/{{campaign.id}}/campaignDetails" class="btn btn-primary">See communication</a>
             </div>
         </div>
         {% endfor %}

@@ -27,7 +27,7 @@ class Campaign(models.Model):
     short_description = models.TextField()
     long_description = models.TextField()
     due_date = models.DateField(default= date.today() + timedelta(days= 90))
-    
+    cover_image = models.ImageField(upload_to='images/', null=True, blank=True)
     completed_on = models.DateField(blank = True, null=True),
     completion_note = models.TextField(blank = True, null=True)
     url = models.URLField(max_length=200, blank=True)
