@@ -15,7 +15,10 @@ def index(request):
 
 def showCampaignDetails(request, id):
     campaign = Campaign.objects.get(id = id)
+    updates = campaign.Updates.all()
     context = {
-        'campaign': campaign
+        'campaign': campaign,
+
     }
+    print("*******", updates)
     return render(request, 'campaingDetails.html', context = context)
