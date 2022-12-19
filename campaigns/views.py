@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Campaign, ContactPerson
+from .models import Campaign, ContactPerson, CampaignUpdate
 
 # Create your views here.
 def index(request):
@@ -15,10 +15,11 @@ def index(request):
 
 def showCampaignDetails(request, id):
     campaign = Campaign.objects.get(id = id)
-    updates = campaign.Updates.all()
+    # campaignUpdates = campaign.campaignupdate_set().all()
     context = {
         'campaign': campaign,
+        'updates':CampaignUpdate.objects.filter(campaign = campaign).order_by('-created_at')
 
     }
-    print("*******", updates)
+    print("*******", CampaignUpdate.objects.filter(campaign = campaign))
     return render(request, 'campaingDetails.html', context = context)

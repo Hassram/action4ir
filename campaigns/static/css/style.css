@@ -1,7 +1,7 @@
 body {
     background: white url("../images/background.webp");
     background-size: 100%;
-backdrop-filter: blur(10px);
+    opacity: 0.9;
 }
 
 

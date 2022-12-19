@@ -2,20 +2,33 @@
 {% block content %}
 
 
-<div class="container">
-    <div class ="row">
+    <div class=" row justify-content-left">
 
-
-
-              <h5 class="card-title">{{campaign.short_description}}</h5>
-              <p class="card-text scroll">{{campaign.long_description }}</p>
-              <p> {{campaign.contact_person.fist_name}}</p>
-              <h5>Contact {{campaign.contact_person.first_name}} {{campaign.contact_person.last_name}} using {{campaign.contact_person.email}} for more information</h5>
-
-
+        <div class="card w-75" style="width: 100;">
+            <div class="card-body">
+            <h5 class="card-title">{{campaign.short_description}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Last Update: {{update.updated_at}}</h6>
+            <p class="card-text">{{campaign.long_description }}</p>
+            </div>
+        </div>
 
 
     </div>
-</div>
+
+
+    <div class=" row justify-content-left">
+        {%for update in updates%}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title">{{update.title}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Last Update: {{update.updated_at}}</h6>
+            <p class="card-text">{{update.description}}</p>
+            </div>
+        </div>
+        {%endfor%}
+
+    </div>
+   
+
 
 {% endblock %}

@@ -12,12 +12,7 @@ class ContactPerson(models.Model):
     email = models.EmailField(max_length=100, blank=True)
     phone = models.CharField(max_length=12)
     
- 
-class CampaignUpdate(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    title = models.CharField(max_length=225)
-    description = models.TextField()   
+
 
 class Campaign(models.Model):
     action_types = [
@@ -37,8 +32,13 @@ class Campaign(models.Model):
     completion_note = models.TextField(blank = True, null=True)
     url = models.URLField(max_length=200, blank=True)
     contact_person = models.ForeignKey(ContactPerson, on_delete=models.SET_DEFAULT, default=None, null=True)
-    ready_for_release= models.BooleanField(default=False) 
-    updates = models.ForeignKey(CampaignUpdate,on_delete=models.CASCADE, default=None, null = True )
-    
-
+    ready_for_release= models.BooleanField(default=False)
      
+     
+      
+class CampaignUpdate(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    title = models.CharField(max_length=225)
+    description = models.TextField()  
+    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE, default=None, null = True )
