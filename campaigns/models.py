@@ -42,3 +42,13 @@ class CampaignUpdate(models.Model):
     title = models.CharField(max_length=225)
     description = models.TextField()  
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE, default=None, null = True )
+    
+class Action(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    title = models.CharField(max_length=225)
+    description = models.TextField()
+    handle = models.CharField(max_length= 100)
+    content = models.TextField()
+    url = models.URLField(max_length=255, blank=True)
+    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE, default=None, null = True )
