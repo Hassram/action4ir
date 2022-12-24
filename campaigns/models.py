@@ -44,8 +44,17 @@ class CampaignUpdate(models.Model):
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE, default=None, null = True )
     
 class Action(models.Model):
+    types = [
+        (1,"Email"),
+        (2,"Letter"),
+        (3,"Tweet"),
+        (3,"Instagram"),
+        (0,"Other"),      
+    ]
+    type = models.PositiveSmallIntegerField(choices = types, default = 1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
     title = models.CharField(max_length=225)
     description = models.TextField()
     handle = models.CharField(max_length= 100)

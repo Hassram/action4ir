@@ -5,5 +5,5 @@ from . import views
 
 urlpatterns = [  
 path('', views.index),  # app homepage
-path('campaign/<int:id>/campaignDetails', views.showCampaignDetails)
+path('<int:id>/campaignDetails', views.showCampaignDetails)
 ]  
