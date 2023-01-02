@@ -48,16 +48,18 @@ class Action(models.Model):
         (1,"Email"),
         (2,"Letter"),
         (3,"Tweet"),
-        (3,"Instagram"),
+        (4,"Instagram"),
+        (5, 'Petitions'),
         (0,"Other"),      
     ]
     type = models.PositiveSmallIntegerField(choices = types, default = 1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
     title = models.CharField(max_length=225)
     description = models.TextField()
     handle = models.CharField(max_length= 100)
     content = models.TextField()
     url = models.URLField(max_length=255, blank=True)
+    file = models.FileField(upload_to ='actionfiles/', null=True, blank=True)
+    active = models.BooleanField(default = False)
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE, default=None, null = True )
